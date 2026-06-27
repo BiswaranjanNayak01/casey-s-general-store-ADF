@@ -1,0 +1,70 @@
+-- ProductMaster
+CREATE TABLE ProductMaster (
+ProductID VARCHAR(20),
+ProductName VARCHAR(100),
+Category VARCHAR(50),
+UnitPrice DECIMAL(10,2),
+SupplierID VARCHAR(20)
+);
+-- StoreMaster
+CREATE TABLE StoreMaster (
+StoreID VARCHAR(20),
+StoreName VARCHAR(100),
+City VARCHAR(50)
+);
+-- EmployeeMaster
+CREATE TABLE EmployeeMaster (
+EmpID VARCHAR(20),
+StoreID VARCHAR(20),
+EmployeeName VARCHAR(100),
+Designation VARCHAR(50)
+);
+-- SupplierMaster
+CREATE TABLE SupplierMaster (
+SupplierID VARCHAR(20),
+SupplierName VARCHAR(100),
+Category VARCHAR(50)
+);
+-- Sales_Staging
+CREATE TABLE Sales_Staging (
+SaleID VARCHAR(20),
+StoreID VARCHAR(20),
+ProductID VARCHAR(20),
+Quantity INT,
+LoadDate DATETIME,
+PipelineRunId VARCHAR(100),
+SourceFileName VARCHAR(200)
+);
+-- RejectedSales
+CREATE TABLE RejectedSales (
+SaleID VARCHAR(20),
+StoreID VARCHAR(20),
+ProductID VARCHAR(20),
+Quantity INT,
+RejectionReason VARCHAR(200),
+LoadDate DATETIME,
+SourceFileName VARCHAR(200)
+);
+-- FactSales
+CREATE TABLE FactSales (
+SaleID VARCHAR(20),
+StoreID VARCHAR(20),
+StoreName VARCHAR(100),
+City VARCHAR(50),
+ProductID VARCHAR(20),
+ProductName VARCHAR(100),
+Category VARCHAR(50),
+Quantity INT,
+UnitPrice DECIMAL(10,2),
+Revenue DECIMAL(12,2),
+LoadDate DATETIME
+);
+-- DailySalesSummary
+CREATE TABLE DailySalesSummary (
+SaleDate DATE,
+StoreID VARCHAR(20),
+City VARCHAR(50),
+TotalRevenue DECIMAL(12,2),
+TransactionCount INT,
+AvgTransactionValue DECIMAL(12,2)
+);
